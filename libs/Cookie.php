@@ -42,5 +42,9 @@ class Cookie {
         
         return $data;
     }
+    
+    static public function destroy($name) {
+        setcookie($name, '', time - 3600);
+    }
 }
 ?>

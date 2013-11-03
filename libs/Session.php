@@ -27,6 +27,7 @@ class Session {
     }
     
     public static function load_data() {
+        
         $data = file_get_contents(self::SESSION_PATH . 
                 'sess_'.self::$__session_id);
         self::$__data = json_decode($data, true);
@@ -45,6 +46,11 @@ class Session {
     
     public static function get($name) {
         return self::$__data[$name];
+    }
+    
+    public static function destroy() {
+        file_put_contents(self::SESSION_PATH . 
+                'sess_'.self::$__session_id, '');
     }
 }
 
